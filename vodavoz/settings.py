@@ -23,11 +23,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = keys.SECRET_KEY
-# SECRET_KEY = os.getenv('SECRET_KEY', 'None')
+# SECRET_KEY = keys.SECRET_KEY
+SECRET_KEY = os.getenv('SECRET_KEY', 'None')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'vodavoz.herokuapp.com', 'localhost']
 
@@ -81,8 +81,8 @@ WSGI_APPLICATION = 'vodavoz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.parse(keys.HEROKU_URL)} # for local start
-# DATABASES = {'default': dj_database_url.parse(os.getenv('DATABASE_URL', 'None'))}
+# DATABASES = {'default': dj_database_url.parse(keys.HEROKU_URL)} # for local start
+DATABASES = {'default': dj_database_url.parse(os.getenv('DATABASE_URL', 'None'))}
 
 
 # Password validation
