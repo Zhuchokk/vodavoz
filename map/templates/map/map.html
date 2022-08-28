@@ -1,4 +1,5 @@
 {% load to_str %}
+{% load to_dot %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -79,7 +80,7 @@
             var y_icon =  L.AwesomeMarkers.icon({"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"});
             var n_icon =  L.AwesomeMarkers.icon({"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"});
             {% for marker in markers %}
-                markers.push(L.marker([{{ marker.latitude }}, {{ marker.longitude }}], {"name": "{{ marker.location }}"}).addTo(marker_cluster));
+                markers.push(L.marker([{{ marker.latitude|to_dot }}, {{ marker.longitude|to_dot }}], {"name": "{{ marker.location }}"}).addTo(marker_cluster));
                 {% if marker.status %}
                     markers[markers.length - 1].setIcon(y_icon);
                 {% else %}
