@@ -22,7 +22,7 @@ class Marker(models.Model):
     DRINK = 'DR'
     TYPE_OF_WATER = [
         (HOUSEHOLD, 'бытовая'),
-        (TOILET, 'туалетная'),
+        (TOILET, 'техническая'),
         (DRINK, 'питьевая')
     ]
 
