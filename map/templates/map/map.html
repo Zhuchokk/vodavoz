@@ -40,15 +40,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
     <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+    <link rel="stylesheet" href="{% static 'map/css/articmodal.css' %}" >
+    <script src="{% static 'map/scripts/articmodal.js' %}"></script>
 </head>
-<body>    
-    
+<body>
+            <div style="display: none;">
+    <div class="box-modal" id="exampleModal">
+        <div  class="box-modal_close arcticmodal-close">закрыть</div>
+        <p style="padding:10px">Почему так мало точек? Посмотрите <a href="/info">здесь</a></p>
+    </div>
+</div>
             <div class="folium-map" id="map" ></div>
 <!--            <a href="" style="position: fixed; left: 0%; top: 7%;"><img src="{% static 'map/images/info.png' %}" alt="" width=37></a>-->
         
 </body>
 <script>    
-    
+            $(function(){
+                $('#exampleModal').arcticmodal();
+            });
+
             var map = L.map(
                 "map",
                 {

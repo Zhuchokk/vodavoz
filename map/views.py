@@ -65,6 +65,7 @@ class EditForm(ListView, FormView):
     form_class = MarkerForm
 
     def get_queryset(self):
+        print(6789)
         objects = {}
         user = self.request.user
         # user = authenticate(username=data['username'], password=data['password'])
@@ -120,3 +121,8 @@ class EditForm(ListView, FormView):
 
     def get_success_url(self):
         return reverse('EditForm')
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect("LoginForm")
+        return super(EditForm, self).dispatch(request, *args, **kwargs)
